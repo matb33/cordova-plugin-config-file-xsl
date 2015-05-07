@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin
+	xmlns="http://apache.org/cordova/ns/plugins/1.0"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	id="cordova-plugin-config-file-xsl"
+	version="0.0.1">
+
+	<name>XSLT via hook</name>
+	<description>XSLT via hook</description>
+
+	<engines>
+		<engine name="cordova" version=">=3.8.0" />
+	</engines>
+
+	<source-file src="xslt.js" />
+	<hook type="after_plugin_install" src="npm-install.js" />
+	<hook type="after_prepare" src="xslt.js" />
+</plugin>
