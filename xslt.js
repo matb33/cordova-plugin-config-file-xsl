@@ -1,8 +1,8 @@
 module.exports = function (context) {
-	var xslt = require("node_xslt");
-	var et = require("elementtree");
-	var fs = require("fs");
-	var path = require("path");
+	var libxslt = context.requireCordovaModule("libxslt");
+	var path = context.requireCordovaModule("path");
+	var et = context.requireCordovaModule("elementtree");
+	var fs = context.requireCordovaModule("fs");
 
 	function processConfigFileXsl(platform, xslConfigElement) {
 		var target = xslConfigElement.attrib && xslConfigElement.attrib.target;
@@ -14,15 +14,14 @@ module.exports = function (context) {
 		var xslString = et.tostring(xslStylesheetElement);
 		var xmlFilename = path.join(context.opts.projectRoot, "platforms", platform, target);
 
-		var xsl = xslt.readXsltString(xslString);
-		var xml = xslt.readXmlFile(xmlFilename);
-
-		try {
-			var result = xslt.transform(xsl, xml, []);
-			if (result) fs.writeFileSync(xmlFilename, result, "utf-8");
-		} catch (e) {
-			return console.error(e);
-		}
+		libxslt.parse(xslString, function (err, stylesheet) {
+			if (err) return console.error(err);
+			var documentString = fs.readFileSync(xmlFilename).toString();
+			stylesheet.apply(documentString, [], function (err, result) {
+				if (err) return console.error(err);
+				if (result) fs.writeFileSync(xmlFilename, result, "utf-8");
+			});
+		});
 	}
 
 	context.opts.cordova.plugins.forEach(function (plugin) {
