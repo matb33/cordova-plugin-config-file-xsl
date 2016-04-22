@@ -26,6 +26,9 @@
       "version": ">=4"
     }
   ],
+  "dependencies": {
+    "libxslt": "0.6.3"
+  },
   "author": "Mathieu Bouchard",
   "license": "MIT"
 }
