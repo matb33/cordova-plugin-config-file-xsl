@@ -1,0 +1,31 @@
+{
+  "name": "cordova-plugin-config-file-xsl",
+  "version": "0.0.3",
+  "description": "Cordova config file XSLT plugin",
+  "cordova": {
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matb33/cordova-plugin-config-file-xsl"
+  },
+  "keywords": [
+    "cordova",
+    "xslt"
+  ],
+  "engines": [
+    {
+      "name": "cordova-android",
+      "version": ">=5"
+    },
+    {
+      "name": "cordova-ios",
+      "version": ">=4"
+    }
+  ],
+  "author": "Mathieu Bouchard",
+  "license": "MIT"
+}
