@@ -2,6 +2,8 @@
 
 Use XSLT in plugin.xml to transform common or platform-specific XML files. In particular, will permit you to go beyond what the built-in cordova config-file can do, such as editing and removing nodes, and working with attributes.
 
+Unfortunately, you will need to specify the dependency for `"libxslt": "0.6.3"` yourself in your app's package.json. There currently does not appear to be a mechanism for Cordova plugins to install npm dependencies (only other cordova plugins).
+
 Example usage:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
