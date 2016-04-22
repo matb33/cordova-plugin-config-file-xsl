@@ -1,5 +1,5 @@
 module.exports = function (context) {
-	var libxslt = context.requireCordovaModule("libxslt");
+	var libxslt = require("libxslt");
 	var path = context.requireCordovaModule("path");
 	var et = context.requireCordovaModule("elementtree");
 	var fs = context.requireCordovaModule("fs");
